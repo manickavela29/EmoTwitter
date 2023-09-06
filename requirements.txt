@@ -1,8 +1,8 @@
-onnx
-optimum[onnxruntime]
 transformers
-flask
-urllib3
+onnxruntime
+optimum
+onnx
 numpy
-scikit-learn 
-gunicorn
+fastapi>=0.68.0,<0.69.0
+pydantic>=1.8.0,<2.0.0
+uvicorn

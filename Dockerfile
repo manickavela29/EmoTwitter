@@ -1,13 +1,13 @@
 FROM python:3.8
 
-COPY requirements.txt /tmp/
-RUN pip install --requirement /tmp/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install -r /code/requirements.txt
 
 WORKDIR /app
-COPY . .
-#RUN wget https://storage.googleapis.com/twitter-em-roberta-models/model.zip
-RUN unzip model.zip
+COPY . /app
+RUN wget https://storage.googleapis.com/twitter-em-roberta-models/twitter-models.zip
 
-EXPOSE 5000
 
-CMD [ "flask","run","--host", "0.0.0.0:5000"]
+RUN unzip twitter-models.zip
+
+CMD ["uvicorn","app.main:app","--host",,"--port","80"]
