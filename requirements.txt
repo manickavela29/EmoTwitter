@@ -1,0 +1,5 @@
+onnxruntime
+onnx
+flask
+urllib3 
+numpy
