@@ -1,0 +1,8 @@
+transformers
+onnxruntime
+optimum
+onnx
+numpy
+fastapi>=0.68.0,<0.69.0
+pydantic>=1.8.0,<2.0.0
+uvicorn
