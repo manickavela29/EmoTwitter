@@ -42,28 +42,27 @@ def main():
 
 # Defining path operation for /name endpoint
 @app.post('/tweet-base/')
-async def twitter_base_detect(tweet : Tweets):
+def twitter_base_detect(tweet : Tweets):
     # Defining a function that takes only string as input and output the
     # following message.
 
     tweet = preprocess(tweet.texts)
     inference = load_pipe('base')
     start_time = perf_counter()
-    pred = await inference(tweet)
+    pred = inference(tweet)
     latency = perf_counter() - start_time
     pred = inference(tweet)
     return {'message' : {"quant_model":False,"emotion-detection" : pred,"latency" : str(latency)+' ms'}}
 
 # Defining path operation for /name endpoint
 @app.post('/tweet-quant/')
-async def twitter_quant_detect(tweet:Tweets):
+def twitter_quant_detect(tweet:Tweets):
     # Defining a function that takes only string as input and output the
     # following message.
-
     tweet = preprocess(tweet.texts)
     inference = load_pipe('quant')
     start_time = perf_counter()
-    pred = await inference(tweet)
+    pred = inference(tweet)
     latency = perf_counter() - start_time
     pred = inference(tweet)
     return {'message' : {"quant_model":True,"emotion-detection" : pred,"latency" : str(latency)+' ms'}}

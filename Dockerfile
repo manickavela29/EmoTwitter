@@ -7,7 +7,6 @@ WORKDIR /app
 COPY . /app
 RUN wget https://storage.googleapis.com/twitter-em-roberta-models/twitter-models.zip
 
-
 RUN unzip twitter-models.zip
 
-CMD ["uvicorn","app.main:app","--host",,"--port","80"]
+CMD ["uvicorn","app.main:app","--host","0.0.0.0","--port","80"]
