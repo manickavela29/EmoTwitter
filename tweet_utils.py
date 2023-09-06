@@ -19,7 +19,7 @@ def load_model(type:str = 'quant') :
     #The models are optimized for CPU inference, therefore no support for GPU execution is provided as of now
     ort_model = ORTModelForSequenceClassification.from_pretrained(model_path)
     inference = pipeline("text-classification", model=ort_model, tokenizer=tokenizer)
-    
+
     return inference
 
 

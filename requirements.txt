@@ -1,5 +1,8 @@
-onnxruntime
 onnx
+optimum[onnxruntime]
+transformers
 flask
-urllib3 
+urllib3
 numpy
+scikit-learn 
+gunicorn

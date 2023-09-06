@@ -1,14 +1,13 @@
 FROM python:3.8
 
 COPY requirements.txt /tmp/
-
 RUN pip install --requirement /tmp/requirements.txt
 
 WORKDIR /app
-RUN wget "https://drive.google.com/uc?id=12yRZeaunIvKmm8euxchqH_Y12asn3taC&export=download"
-#RUN wget f"https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/emotion/mapping.txt"
-COPY ModelServingTwitterEmotion.zip ModelServingTwitterEmotion.zip
-RUN ls 
-RUN unzip ModelServingTwitterEmotion.zip -d /app/model/
+COPY . .
+#RUN wget https://storage.googleapis.com/twitter-em-roberta-models/model.zip
+RUN unzip model.zip
 
-CMD ["bash"]
+EXPOSE 5000
+
+CMD [ "flask","run","--host", "0.0.0.0:5000"]
